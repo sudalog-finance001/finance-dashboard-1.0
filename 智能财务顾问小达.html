@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能财务顾问小达</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script>
+    // 预加载回答内容（已将圆通速递替换为速达物流）
+    const answerContent = `
+速达物流2025年第三季度财务分析及战略决策建议 
+ 一、财务指标分析 
+ （一）盈利能力指标 
+ 1. 营业收入：本报告期（2025年第三季度）实现营业收入182.72亿元，同比增长8.73%；年初至报告期末实现营业收入541.56亿元，同比增长9.69%，整体收入规模稳步扩大。 
+ 2. 利润总额：本报告期利润总额12.44亿元，同比大幅增长39.31%；年初至报告期末利润总额34.76亿元，同比增长1.80%，第三季度单季增速亮眼。 
+ 3. 归属于上市公司股东的净利润：本报告期为10.46亿元，同比增长10.97%；年初至报告期末为28.77亿元，同比下降1.83%，核心盈利增长略低于收入增速。 
+ 4. 每股收益与净资产收益率：基本每股收益本报告期为0.3053元/股，同比增长11.50%；加权平均净资产收益率本报告期为3.45%，同比增加0.34个百分点。 
+ （二）资产负债指标 
+ 1. 总资产与所有者权益：截至2025年9月30日，总资产516.70亿元，较上年末增长6.99%；归属于上市公司股东的所有者权益333.67亿元，较上年末增长5.35%。 
+ 2. 资产构成：流动资产146.06亿元，非流动资产370.63亿元（同比增长12.12%），其中固定资产229.76亿元、在建工程39.83亿元（同比增长74.16%）。 
+ 3. 负债情况：总负债178.17亿元，较上年末增长10.76%，短期借款42.50亿元，流动负债合计141.80亿元，短期偿债压力可控。 
+ （三）现金流量指标 
+ 1. 经营活动现金流量：年初至报告期末净额46.71亿元，同比增长14.41%，现金回款能力较强。 
+ 2. 投资活动现金流量：净额-60.85亿元，同比小幅改善，聚焦核心资产建设。 
+ 3. 筹资活动现金流量：净额-1.09亿元，同比改善明显，筹资结构优化。 
+ （四）成本费用指标 
+ 1. 营业成本：年初至报告期末493.51亿元，同比增长10.62%，略高于营业收入增速。 
+ 2. 期间费用：销售费用同比增长38.27%，管理费用同比微增0.19%，研发费用同比增长4.62%，财务费用同比大幅减少97.09%。 
+  二、战略决策建议 
+ （一）供应链全局管控建议 
+ 1. 强化供应链一体化整合，联动"速乡达"乡村网络，构建覆盖城乡的"仓运配一体化"服务体系。 
+ 2. 优化供应链成本管控，结合"速乡达"线路整合城乡运输资源，通过规模化采购、路径优化降低运输成本。 
+ 3. 搭建供应链数字化平台，融入"速乡达"网点管理、订单归集功能，提升城乡供应链透明度和协同效率。 
+ （二）仓运配环节优化建议 
+ 1. 仓储网络升级，加快智能仓储中心建设，同步在县域布局乡村仓储节点，建立"区域仓-城市仓-前置仓-乡村节点"四级网络。 
+ 2. 运输效率提升，优化线路规划，为"速乡达"配置乡村专用车辆，加大干线运输及城乡直达运输规模化程度。 
+ 3. 末端配送优化，以"速乡达"网点为核心，推进多元化配送模式，完善乡村末端配送网络，提升城乡配送效率。 
+ （三）智能关务服务平台建设建议 
+ 1. 技术赋能关务效率，引入AI智能申报、自动归类等功能，对接监管系统缩短通关时间。 
+ 2. 拓展跨境关务服务，提供"关务+物流"一体化服务，解决跨境电商合规与时效问题。 
+ 3. 强化关务风险管控，建立风险预警机制，加强团队培训降低通关异常风险。 
+ （四）医药专项寄递业务发展建议 
+ 1. 搭建专业化医药寄递网络，建设医药冷链仓储和运输体系，配备专业设备与团队。 
+ 2. 强化合规与安全管控，严格遵守相关法规，建立医药产品追溯体系，保障药品安全。 
+ 3. 拓展医药寄递场景，聚焦处方药、疫苗等核心场景，推出差异化寄递产品和服务。 
+ （五）企业级寄递服务升级建议 
+ 1. 定制化服务体系建设，针对制造、电商等企业客户，提供个性化寄递解决方案。 
+ 2. 提升企业级客户服务效率，实现系统对接和信息共享，降低客户物流管理成本。 
+ 3. 拓展企业级客户合作深度，从单一寄递延伸至供应链一体化服务，增强客户粘性。 
+ （六）速乡达专项发展建议 
+ 1. 推进乡村网点标准化建设，配备智能设备，建立考核激励机制，提升网点服务能力。 
+ 2. 助力农品上行，提供预处理、包装服务，联合政府与电商平台打造农品专属运输通道。 
+ 3. 优化农资下乡服务，推批量配送、预约配送，建立农资追溯体系，保障供应时效与质量。
+`;
+
+    // 分发相关配置
+    let hasDistributed = false; // 标记是否已分发
+    const distributionSystems = [
+      "供应链管理系统",
+      "仓运配调度系统",
+      "智能关务平台",
+      "医药寄递专项系统",
+      "企业级服务平台",
+      "速乡达专项系统"
+    ];
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .typing-animation::after {
+        content: '';
+        @apply inline-block w-2 h-4 bg-blue-600 ml-1 animate-pulse;
+      }
+      .chat-bubble {
+        @apply rounded-2xl p-4 max-w-[85%] shadow-md;
+      }
+      .agent-bubble {
+        @apply bg-blue-50 text-blue-900 rounded-tr-none;
+      }
+      .user-bubble {
+        @apply bg-gray-100 text-gray-800 rounded-tl-none self-end;
+      }
+      .gradient-bg {
+        @apply bg-gradient-to-br from-blue-800 to-blue-950; /* 深蓝色渐变 */
+      }
+      .tech-icon-container {
+        @apply relative w-64 h-64 md:w-80 md:h-80 rounded-full gradient-bg flex items-center justify-center shadow-2xl overflow-hidden;
+      }
+      .tech-circle {
+        @apply absolute inset-0 border-8 border-blue-700/30 rounded-full;
+        animation: pulse 3s infinite;
+      }
+      .tech-circle-2 {
+        @apply absolute inset-8 border-4 border-blue-600/40 rounded-full;
+        animation: pulse 4s infinite reverse;
+      }
+      .distribute-btn {
+        @apply bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 mt-3 w-full md:w-auto;
+      }
+      .distribute-btn:disabled {
+        @apply bg-gray-400 cursor-not-allowed hover:transform-none hover:shadow-none;
+      }
+      .system-tag {
+        @apply bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full mr-2 mb-2 inline-block;
+      }
+      .tech-flash {
+        animation: flash 0.5s ease-in-out;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes flash {
+        0% { background-color: rgba(30, 64, 175, 0.1); }
+        50% { background-color: rgba(30, 64, 175, 0.3); }
+        100% { background-color: rgba(30, 64, 175, 0); }
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+  <!-- 顶部导航栏 -->
+  <header class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <i class="fa fa-microchip text-2xl" aria-hidden="true"></i> <!-- 科技感图标 -->
+        <h1 class="text-xl md:text-2xl font-bold">智能财务顾问小达</h1>
+      </div>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="hover:text-blue-200 transition-colors"><i class="fa fa-home mr-1"></i>首页</a></li>
+          <li><a href="#chat" class="hover:text-blue-200 transition-colors"><i class="fa fa-comments mr-1"></i>咨询</a></li>
+          <li><a href="#about" class="hover:text-blue-200 transition-colors"><i class="fa fa-info-circle mr-1"></i>关于</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主要内容区 -->
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <!-- 首页智能体展示区 -->
+    <section id="home" class="flex flex-col md:flex-row items-center justify-center gap-8 py-12">
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-800 leading-tight">
+          智能分析 <span class="text-blue-800">财务数据</span>
+          <br>
+          专业提供 <span class="text-blue-900">战略建议</span>
+        </h2>
+        <div class="mt-8 flex justify-center md:justify-start">
+          <a href="#chat" class="gradient-bg text-white px-8 py-3 rounded-full font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+            开始咨询 <i class="fa fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 flex justify-center">
+        <div class="relative">
+          <!-- 科技感智能体形象（替换原有圆圈） -->
+          <div class="tech-icon-container">
+            <div class="tech-circle"></div>
+            <div class="tech-circle-2"></div>
+            <!-- 科技感核心图标 -->
+            <div class="relative z-10 text-center">
+              <i class="fa fa-line-chart text-white text-7xl md:text-9xl" aria-hidden="true"></i>
+              <div class="mt-2 text-white font-semibold text-lg">AI 财务智库</div>
+            </div>
+          </div>
+          <!-- 浮动气泡 -->
+          <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg animate-bounce">
+            <span class="text-blue-800 font-medium">智能分析</span>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white p-3 rounded-lg shadow-lg animate-pulse">
+            <i class="fa fa-database text-blue-700 mr-1"></i>
+            <span class="text-gray-700">数据驱动</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 聊天咨询区 -->
+    <section id="chat" class="py-12">
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="gradient-bg text-white p-4">
+          <h3 class="text-xl font-bold flex items-center">
+            <i class="fa fa-comments mr-2"></i> 与小达对话
+          </h3>
+        </div>
+        <!-- 聊天内容区 -->
+        <div id="chat-container" class="h-[400px] overflow-y-auto p-4 bg-gray-50 space-y-4">
+          <!-- 初始欢迎消息（修改后） -->
+          <div class="flex items-start">
+            <div class="w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3 flex-shrink-0">
+              <i class="fa fa-microchip" aria-hidden="true"></i> <!-- 科技感头像图标 -->
+            </div>
+            <div class="chat-bubble agent-bubble">
+              <p class="text-gray-800">你好！我是智能财务顾问小达，专注于提供专业的财务分析与战略决策建议。你可以问我相关问题，例如："营收情况如何？"或"请提供供应链管控建议"等。</p>
+            </div>
+          </div>
+        </div>
+        <!-- 输入区 -->
+        <div class="p-4 border-t border-gray-200">
+          <form id="chat-form" class="flex gap-2">
+            <input 
+              type="text" 
+              id="user-input" 
+              placeholder="请输入你的问题..." 
+              class="flex-grow px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-800 focus:border-transparent"
+            >
+            <button 
+              type="submit" 
+              class="gradient-bg text-white px-6 py-2 rounded-full hover:bg-blue-900 transition-colors"
+            >
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </form>
+          <div class="mt-2 text-center text-sm text-gray-500">
+            示例问题：财务指标有哪些？| 战略建议包括什么？| 仓运配优化方案？| 请将此内容分发至速达各系统
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 关于区 -->
+    <section id="about" class="py-12">
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-6 md:p-8">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+          <i class="fa fa-info-circle text-blue-800 mr-2"></i> 关于小达
+        </h3>
+        <div class="space-y-4 text-gray-600">
+          <p>智能财务顾问小达是专业的财务分析AI工具，专注于提供全面的财务数据解析和战略决策建议。</p>
+          <h4 class="font-bold text-gray-700">核心功能：</h4>
+          <ul class="list-disc list-inside space-y-1 pl-2">
+            <li>财务指标深度解析（盈利能力、资产负债、现金流量、成本费用）</li>
+            <li>供应链全局管控专业建议</li>
+            <li>仓运配环节优化方案</li>
+            <li>智能关务服务平台建设指导</li>
+            <li>医药专项寄递业务发展规划</li>
+            <li>企业级寄递服务升级建议</li>
+            <li>速乡达乡村物流网络整合与发展建议</li>
+            <li>多系统建议分发功能</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <div class="flex items-center space-x-2">
+            <i class="fa fa-microchip text-xl" aria-hidden="true"></i>
+            <span class="text-xl font-bold">智能财务顾问小达</span>
+          </div>
+          <p class="text-gray-400 mt-1">专业财务分析与战略建议平台</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-question-circle text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-cog text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fa fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="mt-6 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
+        &copy; 2025 智能财务顾问小达
+      </div>
+    </div>
+  </footer>
+
+  <!-- 科技感闪烁覆盖层（默认隐藏） -->
+  <div id="flash-overlay" class="fixed inset-0 pointer-events-none z-50" style="background-color: transparent; transition: background-color 0.5s ease-in-out;"></div>
+
+  <script>
+    // 聊天功能实现
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatForm = document.getElementById('chat-form');
+      const userInput = document.getElementById('user-input');
+      const chatContainer = document.getElementById('chat-container');
+      const flashOverlay = document.getElementById('flash-overlay');
+
+      // 表单提交处理
+      chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const question = userInput.value.trim();
+        
+        if (question) {
+          // 添加用户消息
+          addUserMessage(question);
+          
+          // 清空输入框
+          userInput.value = '';
+          
+          // 模拟思考中状态
+          addThinkingMessage();
+          
+          // 判断是否是分发请求
+          if (question.toLowerCase().includes('分发至速达各系统')) {
+            setTimeout(() => {
+              // 移除思考中消息
+              removeThinkingMessage();
+              
+              // 处理分发请求
+              showDistributionResponse();
+            }, 1500);
+          } else {
+            // 普通问题，返回预设回答
+            setTimeout(() => {
+              // 移除思考中消息
+              removeThinkingMessage();
+              
+              // 添加回答消息（逐字打字效果）
+              addTypedAgentMessage(answerContent);
+            }, 1500);
+          }
+        }
+      });
+
+      // 添加用户消息
+      function addUserMessage(content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'flex items-start justify-end';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble user-bubble';
+        bubble.innerHTML = `<p class="text-gray-800">${content}</p>`;
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 ml-3 flex-shrink-0';
+        avatar.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>';
+        
+        messageDiv.appendChild(bubble);
+        messageDiv.appendChild(avatar);
+        
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      // 添加思考中消息
+      function addThinkingMessage() {
+        const thinkingDiv = document.createElement('div');
+        thinkingDiv.id = 'thinking-message';
+        thinkingDiv.className = 'flex items-start';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3 flex-shrink-0';
+        avatar.innerHTML = '<i class="fa fa-microchip" aria-hidden="true"></i>';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble agent-bubble typing-animation';
+        bubble.innerHTML = '<p class="text-gray-800">思考中...</p>';
+        
+        thinkingDiv.appendChild(avatar);
+        thinkingDiv.appendChild(bubble);
+        
+        chatContainer.appendChild(thinkingDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+
+      // 移除思考中消息
+      function removeThinkingMessage() {
+        const thinkingDiv = document.getElementById('thinking-message');
+        if (thinkingDiv) {
+          thinkingDiv.remove();
+        }
+      }
+
+      // 显示分发响应（包含一键分发按钮）
+      function showDistributionResponse() {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'flex items-start';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3 flex-shrink-0';
+        avatar.innerHTML = '<i class="fa fa-microchip" aria-hidden="true"></i>';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble agent-bubble';
+        
+        // 构建响应内容
+        let responseHtml = `
+          <p class="text-gray-800">已完成建议分类整理，可一键分发至速达各相关业务系统。分类逻辑如下：</p>
+          <ul class="list-disc list-inside text-gray-800 mt-2 space-y-1">
+            <li>财务指标分析同步至所有系统作为数据支撑</li>
+            <li>各专项建议精准匹配对应业务系统</li>
+            <li>全局战略建议同步至管理层决策系统</li>
+          </ul>
+          <div class="mt-3">
+            <p class="text-gray-800 text-sm mb-2">目标系统：</p>
+            <div class="flex flex-wrap">
+        `;
+        
+        // 添加系统标签
+        distributionSystems.forEach(system => {
+          responseHtml += `<span class="system-tag">${system}</span>`;
+        });
+        
+        // 添加分发按钮
+        const buttonId = 'distribute-button-' + Date.now();
+        responseHtml += `
+            </div>
+            <button id="${buttonId}" class="distribute-btn">
+              <i class="fa fa-rocket"></i> 一键分发
+            </button>
+          </div>
+        `;
+        
+        bubble.innerHTML = responseHtml;
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(bubble);
+        
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        // 绑定按钮点击事件
+        setTimeout(() => {
+          const distributeBtn = document.getElementById(buttonId);
+          if (distributeBtn) {
+            distributeBtn.addEventListener('click', function() {
+              performDistribution(distributeBtn);
+            });
+          }
+        }, 100);
+      }
+
+      // 逐字打字效果添加代理消息
+      function addTypedAgentMessage(content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'flex items-start';
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3 flex-shrink-0';
+        avatar.innerHTML = '<i class="fa fa-microchip" aria-hidden="true"></i>';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble agent-bubble typing-animation';
+        const textElement = document.createElement('p');
+        textElement.className = 'text-gray-800';
+        bubble.appendChild(textElement);
+        
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(bubble);
+        
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        // 逐字显示文本
+        let index = 0;
+        const speed = 15; // 打字速度（毫秒/字）
+        
+        function type() {
+          if (index < content.length) {
+            // 保留换行符
+            if (content.charAt(index) === '\n') {
+              textElement.innerHTML += '<br>';
+            } else {
+              textElement.innerHTML += content.charAt(index);
+            }
+            index++;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            setTimeout(type, speed);
+          } else {
+            // 打字完成，移除打字动画
+            bubble.classList.remove('typing-animation');
+          }
+        }
+        
+        type();
+      }
+
+      // 执行分发操作
+      function performDistribution(buttonElement) {
+        // 禁用按钮，防止重复点击
+        buttonElement.disabled = true;
+        buttonElement.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 分发中...';
+        
+        // 显示科技感闪烁效果
+        flashOverlay.style.backgroundColor = 'rgba(30, 64, 175, 0.3)';
+        
+        // 闪烁效果持续时间
+        setTimeout(() => {
+          flashOverlay.style.backgroundColor = 'transparent';
+          
+          // 更新按钮状态
+          buttonElement.innerHTML = '<i class="fa fa-check-circle"></i> 已完成分发';
+          
+          // 添加分发成功消息
+          setTimeout(() => {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'flex items-start';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'w-10 h-10 rounded-full gradient-bg flex items-center justify-center text-white mr-3 flex-shrink-0';
+            avatar.innerHTML = '<i class="fa fa-microchip" aria-hidden="true"></i>';
+            
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble agent-bubble';
+            bubble.innerHTML = '<p class="text-gray-800">✅ 分发成功！所有建议已同步至对应系统，各部门可在系统中查看详细内容并执行落地。</p>';
+            
+            successDiv.appendChild(avatar);
+            successDiv.appendChild(bubble);
+            
+            chatContainer.appendChild(successDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            // 标记为已分发
+            hasDistributed = true;
+          }, 300);
+        }, 500);
+      }
+
+      // 支持回车键提交
+      userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          chatForm.dispatchEvent(new Event('submit'));
+        }
+      });
+
+      // 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
